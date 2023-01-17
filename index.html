@@ -72,16 +72,6 @@
             text-align: center;
             margin-top: 1rem;
         }
-        
-        #boom {
-            position: absolute;
-            bottom: 5 !important;
-            width: 5rem;
-            text-align: center;
-            display: none;
-            transform: translateX(200%);
-            filter: drop-shadow(0px 0px 20px #ff2b05);
-        }
     </style>
 </head>
 <body>
@@ -92,7 +82,6 @@
             <div class="garis1"></div>
             <div class="garis2"></div>
             <div class="biji1"></div>
-            <img id="boom" src="explosion.png" alt="explosion" />
             <div class="biji2"></div>
         </div>
     </div>
@@ -103,13 +92,9 @@
         window.addEventListener('touchstart', function(){
             var audio = new Audio('lato lato_1.mp3')
             audio.play()
-            document.getElementById('boom').style.display = 'inline'
             document.getElementsByClassName('biji')[0].classList.add('space')
             document.getElementsByClassName('garis1')[0].classList.add('rotatekanan')
             document.getElementsByClassName('garis2')[0].classList.add('rotatekiri')
-            timer = setTimeout(function(){
-                document.getElementById('boom').style.display = 'none'
-            }, 100)
         })
         window.addEventListener('touchend', function(){
             document.getElementById('boom').style.display = 'none'
@@ -118,18 +103,6 @@
             document.getElementsByClassName('garis2')[0].classList.remove('rotatekiri')
             x += 1;
             document.getElementById('score').innerHTML = x - 1
-            clearTimeout(timer)
-            
-            if(x == 100){
-                ('biji1')[0].style.backgroundColor = '#ff0505'
-                document.getElementsByClassName('biji2')[0].style.backgroundColor = '#ff0505'
-                document.getElementsByTagName('h1')[0].innerHTML = 'Gabut Amat'
-            }else if(x == 150){
-                document.getElementsByTagName('h1')[0].innerHTML = 'Buset dah'
-            }else if(x == 200){
-                document.getElementsByTagName('h1')[0].innerHTML = 'Diluar Nalar Cuyyyy!!!!'
-                document.getElementsByClassName('biji')[0].style.display = 'none'
-            }
         })
     </script>
 </body>
